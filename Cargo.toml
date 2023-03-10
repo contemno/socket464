@@ -1,0 +1,17 @@
+[package]
+name = "sock464"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+libc = "0.2"
+backtrace = "0.3.61"
+socket2 = "0.5.1"
+either = "1.8.1"
+dns-lookup = "1.0.8"
+
+[lib]
+name = "sock464"
+crate-type = ["cdylib"]
