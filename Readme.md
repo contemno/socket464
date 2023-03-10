@@ -14,16 +14,16 @@ function is more flexible.
 
 Eventually the goal is to incorporate this functionality into the Linux kernel.
 
-## Challenges running single-stack with IPv6
+## Running single-stack with IPv6
 
-As the world slowly transitions to IPv6 there are challenges that impede
+As the world slowly transitions to IPv6 there are various challenges that impede
 progress. Fortunately there are tools to ease that transition, such as
 running both IPv4 and IPv6 simultaneously in a dual-stack configuration.
 Running dual-stack has it's own operational overhead as essentially you're
 running two networks.
 
 Another option that has been recently made possible is running IPv6 only, while
-translatin to IPv4 at the edge when accessing the IPv4 global internet. This
+translating to IPv4 at the edge when accessing the IPv4 global internet. This
 has been made possible by the intrduction of DNS64 and NAT64, for the creation
 of synthetic AAAA records and translation of IPv6 headers to IPv4 headers, respectively. DNS64 and NAT64 work together to facilitate traffic destined to the IPv4 internet,
 over the IPv6-only local network.
