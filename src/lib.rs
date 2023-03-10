@@ -181,7 +181,7 @@ impl S464mapping for sockaddr_in {
         s6_addr[12..16].copy_from_slice(&self.sin_addr.s_addr.to_le_bytes());
 
         eprintln!(
-            "[sock464][debug] Mapped sockaddr_in6 {}:{}",
+            "[sock464][debug] Mapped sockaddr_in6 [{}]:{}",
             Ipv6Addr::from(s6_addr.clone()).to_string(),
             self.sin_port.to_be()
         );

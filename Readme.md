@@ -126,3 +126,68 @@ Edge cases
     * fail, "port in use" or "no route to host"
 
 
+Example wget run
+
+`UST_BACKTRACE=full LD_PRELOAD=./libsock464.so wget -S --max-redirect 5 --header='Host: slashdot.org' http://104.18.28.86/ -O /dev/null
+--2023-03-10 12:01:00--  http://104.18.28.86/
+[sock464][debug] called getaddrinfo
+Connecting to 104.18.28.86:80... 
+[sock464][debug] Called socket(2, 1, 0)
+[sock464][debug]  Mapped socket(10, 1, 0)
+[sock464][debug] Returning socket FD 4
+[sock464][debug] Called connect(4, 0x7ffc590efc40, 16)
+[sock464][debug][connect] Match AF_INET
+[sock464][debug] Mapping AF_INET
+[sock464][debug] Original sockaddr_in 104.18.28.86:80
+[sock464][debug] called getaddrinfo
+[sock464][debug] NAT64 prefix from 'ipv4only.arpa.' [64:ff9b::c000:aa]
+[sock464][debug] Mapped sockaddr_in6 [64:ff9b::6812:1c56]:80
+connected.
+HTTP request sent, awaiting response... 
+  HTTP/1.1 301 Moved Permanently
+  Date: Fri, 10 Mar 2023 17:01:00 GMT
+  Content-Type: text/html
+  Content-Length: 162
+  Connection: keep-alive
+  Location: https://slashdot.org/
+  CF-Cache-Status: DYNAMIC
+  Server: cloudflare
+  CF-RAY: 7a5d1dfeead0b0b7-ATL
+  alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+Location: https://slashdot.org/ [following]
+--2023-03-10 12:01:00--  https://slashdot.org/
+Resolving slashdot.org (slashdot.org)... [sock464][debug] called getaddrinfo
+64:ff9b::6812:1c56, 64:ff9b::6812:1d56, 104.18.29.86, ...
+Connecting to slashdot.org (slashdot.org)|64:ff9b::6812:1c56|:443... 
+[sock464][debug] Called socket(10, 1, 0)
+[sock464][debug]  Mapped socket(10, 1, 0)
+[sock464][debug] Returning socket FD 5
+[sock464][debug] Called connect(5, 0x7ffc590efc40, 28)
+[sock464][debug][connect] Match AF_INET6
+[sock464][debug] Unmapped sockaddr_in6 [64:ff9b::6812:1c56]:443
+connected.
+[sock464][debug]Caught setsockopt(5, 6, 31, 0x7eff1b72cdf5, 4)
+HTTP request sent, awaiting response... 
+  HTTP/1.1 200 OK
+  Date: Fri, 10 Mar 2023 17:01:00 GMT
+  Content-Type: text/html; charset=utf-8
+  Transfer-Encoding: chunked
+  Connection: keep-alive
+  slash_log_data: shtml
+  cache-control: no-cache
+  pragma: no-cache
+  x-frame-options: SAMEORIGIN
+  content-security-policy: frame-ancestors 'self'; upgrade-insecure-requests
+  x-xrds-location: https://slashdot.org/slashdot.xrds
+  strict-transport-security: max-age=31536000
+  CF-Cache-Status: DYNAMIC
+  Server: cloudflare
+  CF-RAY: 7a5d1e000873e77f-ATL
+  alt-svc: h3=":443"; ma=86400, h3-29=":443"; ma=86400
+Length: unspecified [text/html]
+Saving to: ‘/dev/null’
+
+/dev/null                              [ <=>                                                          ] 144.16K  --.-KB/s    in 0.02s   
+
+2023-03-10 12:01:00 (7.29 MB/s) - ‘/dev/null’ saved [147624]
+`
