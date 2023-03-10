@@ -69,7 +69,6 @@ where
 {
     fn new() -> Self;
     fn family() -> u16;
-    // fn from_sockaddr_ptr(addr: *const sockaddr, addrlen: socklen_t) -> Self;
 
     fn as_raw_ptr(&self) -> *const sockaddr {
         (self as *const Self).cast::<sockaddr>()
