@@ -45,9 +45,8 @@ fn pref64() -> [u8; 12] {
     pref
 }
 
-struct LibcOverride {
-    // socket: fn(c_int, *const sockaddr, socklen_t) -> c_int,
-}
+struct LibcOverride {}
+
 impl LibcOverride {
     libc_override! {fn socket(socket_family: c_int, socket_type: c_int, protocol: c_int) -> c_int}
     libc_override! {fn connect(sockfd: c_int, addr: *const sockaddr, addrlen: socklen_t) -> c_int}
